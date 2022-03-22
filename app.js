@@ -24,9 +24,8 @@ function startServer() {
 
     // App Request Handler
     app.get('/', (req, res) => {
-        // Handle Response Headers
-        req.header('Bypass-Tunnel-Reminder', 'True')
-        res.set('Bypass-Tunnel-Reminder', 'True')
+        // Handle Request Header
+        req.headers['Bypass-Tunnel-Reminder'] = 'True'
 
         // Declare User Request Variables
         var userAgent = req.get('User-Agent')

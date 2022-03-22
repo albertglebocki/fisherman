@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "express": "^4.17.3",
+    "geoip-lite": "^1.4.4",
+    "ngrok": "^4.3.1"
+  }
+}

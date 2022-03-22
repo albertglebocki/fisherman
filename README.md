@@ -115,9 +115,9 @@ into your Command-Line.
 
 ## 📝 Todo List
 
-- [] Better Routing
-- [] Faster Response Time
-- [] Better Security
-- [] More Feedback From Client's Connection
+- [ ] Better Routing
+- [ ] Faster Response Time
+- [ ] Better Security
+- [ ] More Feedback From Client's Connection
 
 ###### Keep in mind that this tool is in its early development, so there still may be some bugs. Sorry for any inconvenience.

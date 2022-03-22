@@ -24,7 +24,7 @@ function startServer() {
     // Creating Ngrok Tunnel
     (async function() {
         const url = await ngrok.connect({authtoken: token, addr: 8080})
-        console.log(Bold + Yellow + 'Your url: ' + Reset, url)
+        console.log(Yellow + 'Your url: ' + Reset, url)
     })();
 
     // App Request Handler

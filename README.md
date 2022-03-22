@@ -67,14 +67,14 @@ sudo apt-get update  # Update apt-get
 sudo apt-get install nodejs npm git  # Install all dependencies
 git clone https://github.com/dox-dev/fisherman.git  # Clone Fisherman repository
 cd fisherman  # Enter Fisherman directory
-/usr/bin/npm install  # npm will install all required dependencies
+/usr/bin/npm install --save  # npm will install all required dependencies
 ```
 
 ### Windows
 1. Install [Node.js](https://nodejs.org/en/download/)
 2. Download [repository zip file](https://github.com/dox-dev/fisherman/archive/refs/heads/main.zip) and extract it to another folder
 3. Open the folder, where you extracted repository files with Command Prompt
-4. Run `npm install` to install all required dependencies
+4. Run `npm install --save` to install all required dependencies
 <br>
 
 ## 📦 Setup

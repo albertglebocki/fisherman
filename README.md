@@ -100,7 +100,9 @@ const token = 'PUT YOUR AUTH TOKEN HERE'
 
 #### Finishing Touches
 
-When you'll add your authentication token, you're all set to go. Now you can start your **Fisherman** server, by typing:<br>
+When you'll add your authentication token, you're all set to go. Right now you can upload your `index.html` file into `/public/` directory.
+
+And that's it! Now you can start your **Fisherman** server, by typing:<br>
 ``` bash
 .\fisherman.sh #Windows
 ```
@@ -109,5 +111,13 @@ or
 sh fisherman.sh #Linux
 ```
 into your Command-Line.
+<br>
+
+## 📝 Todo List
+
+- [] Better Routing
+- [] Faster Response Time
+- [] Better Security
+- [] More Feedback From Client's Connection
 
 ###### Keep in mind that this tool is in its early development, so there still may be some bugs. Sorry for any inconvenience.
